@@ -27,12 +27,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Core\\": "./src"
+            "BackendTheme\\": "./src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Core\\Test\\": "./tests",
+            "BackendTheme\\Test\\": "./tests",
             "Test\\App\\": "./tests/App/src"
         }
     },
