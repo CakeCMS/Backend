@@ -1,5 +1,5 @@
 {
-    "name": "cake-cms/backend-theme",
+    "name": "cake-cms/backend",
     "type": "cakephp-plugin",
     "description": "CakePHP CMS backend theme.",
     "license": "MIT",
@@ -27,12 +27,12 @@
     },
     "autoload": {
         "psr-4": {
-            "BackendTheme\\": "./src"
+            "Backend\\": "./src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "BackendTheme\\Test\\": "./tests",
+            "Backend\\Test\\": "./tests",
             "Test\\App\\": "./tests/App/src"
         }
     },
