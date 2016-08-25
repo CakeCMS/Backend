@@ -12,21 +12,3 @@
  * @link      https://github.com/CakeCMS/Backend".
  * @author    Sergey Kalistratov <kalistratov.s.m@gmail.com>
  */
-
-$this->Assets
-    ->jquery()
-    ->jqueryFactory()
-    ->materialize();
-?>
-<html>
-<head>
-    <?php
-    echo $this->fetch('meta');
-    echo $this->fetch('css');
-    ?>
-</head>
-<body>
-<?= $this->fetch('content') ?>
-<?= $this->fetch('script') ?>
-</body>
-</html>

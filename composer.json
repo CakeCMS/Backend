@@ -33,6 +33,8 @@
     "autoload-dev": {
         "psr-4": {
             "Backend\\Test\\": "./tests",
+            "Core\\": "./vendor/cake-cms/core",
+            "Core\\Test\\": "./vendor/cake-cms/core/tests",
             "Test\\App\\": "./tests/App/src"
         }
     },

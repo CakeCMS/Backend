@@ -13,20 +13,16 @@
  * @author    Sergey Kalistratov <kalistratov.s.m@gmail.com>
  */
 
-$this->Assets
-    ->jquery()
-    ->jqueryFactory()
-    ->materialize();
-?>
-<html>
-<head>
-    <?php
-    echo $this->fetch('meta');
-    echo $this->fetch('css');
-    ?>
-</head>
-<body>
-<?= $this->fetch('content') ?>
-<?= $this->fetch('script') ?>
-</body>
-</html>
+namespace Backend\View\Helper;
+
+use Core\View\Helper\FormHelper as CoreFormHelper;
+
+/**
+ * Class FormHelper
+ *
+ * @package Backend\View\Helper
+ */
+class FormHelper extends CoreFormHelper
+{
+
+}

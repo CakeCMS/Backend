@@ -13,20 +13,22 @@
  * @author    Sergey Kalistratov <kalistratov.s.m@gmail.com>
  */
 
-$this->Assets
-    ->jquery()
-    ->jqueryFactory()
-    ->materialize();
-?>
-<html>
-<head>
-    <?php
-    echo $this->fetch('meta');
-    echo $this->fetch('css');
-    ?>
-</head>
-<body>
-<?= $this->fetch('content') ?>
-<?= $this->fetch('script') ?>
-</body>
-</html>
+namespace Backend\Test\TestCase;
+
+use Core\TestSuite\CodeStyle;
+
+/**
+ * Class CodeStyleTest
+ *
+ * @package Backend\Test\TestCase
+ */
+class CodeStyleTest extends CodeStyle
+{
+
+    /**
+     * Package name.
+     *
+     * @var string
+     */
+    protected $_packageName = 'Backend';
+}
