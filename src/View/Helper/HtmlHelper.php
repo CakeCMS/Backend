@@ -19,7 +19,7 @@ use Core\View\Helper\HtmlHelper as CoreHtmlHelper;
 
 /**
  * Class HtmlHelper
- * 
+ *
  * @package Backend\View\Helper
  */
 class HtmlHelper extends CoreHtmlHelper

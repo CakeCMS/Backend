@@ -13,7 +13,9 @@
  * @author    Sergey Kalistratov <kalistratov.s.m@gmail.com>
  */
 
+use JBZoo\Utils\Str;
 use Core\View\AppView;
+use Core\View\Helper\HtmlHelper;
 
 return [
     'meta' => [
@@ -36,7 +38,17 @@ return [
         $helpers->unload('Assets');
 
         $view->loadHelper('Backend.Assets');
-        $view->loadHelper('Html', ['className' => 'Backend.Html']);
+        $view->loadHelper('Html', [
+            'className' => 'Backend.Html',
+            'prepareBtnClass' => function (HtmlHelper $html, $options, $button) {
+                $options = $html->addClass($options, 'waves-effect waves-light btn');
+                if (!empty($button)) {
+                    $options = $html->addClass($options, Str::trim((string) $button));
+                }
+
+                return $options;
+            }
+        ]);
         $view->loadHelper('Form', [
             'className' => 'Backend.Form',
             'templates' => 'Backend.templates/form',
