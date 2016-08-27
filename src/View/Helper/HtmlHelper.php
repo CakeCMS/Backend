@@ -15,23 +15,14 @@
 
 namespace Backend\View\Helper;
 
-use Core\View\Helper\FormHelper as CoreFormHelper;
+use Core\View\Helper\HtmlHelper as CoreHtmlHelper;
 
 /**
- * Class FormHelper
- *
+ * Class HtmlHelper
+ * 
  * @package Backend\View\Helper
  */
-class FormHelper extends CoreFormHelper
+class HtmlHelper extends CoreHtmlHelper
 {
 
-    /**
-    * List of helpers used by this helper.
-    *
-    * @var array
-    */
-    public $helpers = [
-        'Url'  => ['className' => 'Core.Url'],
-        'Html' => ['className' => 'Backend.Html'],
-    ];
 }

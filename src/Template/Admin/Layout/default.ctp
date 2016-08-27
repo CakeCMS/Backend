@@ -11,10 +11,12 @@
  * @copyright MIT License http://www.opensource.org/licenses/mit-license.php
  * @link      https://github.com/CakeCMS/Backend".
  * @author    Sergey Kalistratov <kalistratov.s.m@gmail.com>
+ * @var       \Core\View\AppView $this
  */
 
 $this->Assets
     ->jquery()
+    ->fontAwesome()
     ->jqueryFactory()
     ->materialize();
 ?>
@@ -26,6 +28,12 @@ $this->Assets
     ?>
 </head>
 <body>
+<?php
+echo $this->Html->link('Test', [], [
+    'icon' => 'home',
+    'button' => 'success',
+]);
+?>
 <?= $this->fetch('content') ?>
 <?= $this->fetch('script') ?>
 </body>

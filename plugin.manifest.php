@@ -13,7 +13,6 @@
  * @author    Sergey Kalistratov <kalistratov.s.m@gmail.com>
  */
 
-use JBZoo\Utils\Arr;
 use Core\View\AppView;
 
 return [
@@ -30,14 +29,17 @@ return [
         'backend'     => true,
     ],
     'View.initialize' => function (AppView $view) {
-        $helpers = $view->helpers()->loaded();
+        $helpers = $view->helpers();
 
-        if (Arr::in('Form', $helpers)) {
-            $view->helpers()->unload('Form');
-            $view->loadHelper('Form', [
-                'className' => 'Backend.Form',
-                'templates' => 'Backend.templates/form',
-            ]);
-        }
+        $helpers->unload('Form');
+        $helpers->unload('Html');
+        $helpers->unload('Assets');
+
+        $view->loadHelper('Backend.Assets');
+        $view->loadHelper('Html', ['className' => 'Backend.Html']);
+        $view->loadHelper('Form', [
+            'className' => 'Backend.Form',
+            'templates' => 'Backend.templates/form',
+        ]);
     }
 ];
