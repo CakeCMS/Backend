@@ -28,12 +28,6 @@ $this->Assets
     ?>
 </head>
 <body>
-<?php
-echo $this->Html->link('Test', [], [
-    'icon' => 'home',
-    'button' => 'success',
-]);
-?>
 <?= $this->fetch('content') ?>
 <?= $this->fetch('script') ?>
 </body>

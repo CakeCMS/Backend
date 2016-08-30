@@ -59,4 +59,21 @@ class FormHelperTest extends TestCase
 
         $this->assertHtml($expected, $this->Form->input('test'));
     }
+
+    public function testSwitcher()
+    {
+        $actual = $this->Form->switcher('custom');
+        $expected = '<div class="switch">' .
+                '<div class="switch-title">custom</div>' .
+                '<label>' .
+                    'Off' .
+                        '<input type="hidden" name="custom" value="0"/>' .
+                        '<input type="checkbox" name="custom" value="1" class="filled-in">' .
+                        '<span class="lever"></span>' .
+                    'On' .
+                '</label>' .
+            '</div>';
+
+        $this->assertSame($expected, $actual);
+    }
 }

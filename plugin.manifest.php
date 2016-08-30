@@ -52,6 +52,9 @@ return [
         $view->loadHelper('Form', [
             'className' => 'Backend.Form',
             'templates' => 'Backend.templates/form',
+            'widgets'   => [
+                'checkbox' => 'Backend\View\Widget\CheckboxWidget'
+            ]
         ]);
     }
 ];

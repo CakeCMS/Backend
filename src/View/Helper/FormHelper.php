@@ -34,4 +34,37 @@ class FormHelper extends CoreFormHelper
         'Url'  => ['className' => 'Core.Url'],
         'Html' => ['className' => 'Backend.Html'],
     ];
+
+    /**
+     * Form switcher.
+     *
+     * @param string $fieldName
+     * @param array $options
+     * @return string
+     */
+    public function switcher($fieldName, array $options = [])
+    {
+        $input = parent::checkbox($fieldName, $options);
+
+        $options += [
+            'before' => __d('backend', 'Off'),
+            'after'  => __d('backend', 'On')
+        ];
+
+        $title = (isset($options['title'])) ? $options['title'] : $fieldName;
+
+        if (!empty($title)) {
+            $title = $this->Html->div('switch-title', $title);
+        }
+
+        $content = $this->formatTemplate(__FUNCTION__, [
+            'input'  => $input,
+            'lever'  => '<span class="lever"></span>',
+            'before' => $options['before'],
+            'after'  => $options['after'],
+            'title'  => $title,
+        ]);
+
+        return $content;
+    }
 }
