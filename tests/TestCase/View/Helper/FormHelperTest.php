@@ -15,6 +15,7 @@
 
 namespace Backend\Test\View\Helper;
 
+use Core\Plugin;
 use Core\View\AppView;
 use Core\TestSuite\TestCase;
 
@@ -31,7 +32,11 @@ class FormHelperTest extends TestCase
 
     public function setUp()
     {
-        parent::setUp();
+        Plugin::load($this->_plugin, [
+            'path' => ROOT . DS,
+            'bootstrap' => true
+        ]);
+
         $view = new AppView();
         $view->loadHelper('Form', [
             'className' => 'Backend.Form',

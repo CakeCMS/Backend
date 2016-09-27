@@ -21,7 +21,7 @@
         "jbzoo/phpunit": "^1.10",
         "psy/psysh": "@stable",
         "cake-cms/app": "@dev",
-        "cake-cms/core": "@dev",
+        "cake-cms/core": "^1.0",
         "cakephp/bake": "~1.1",
         "cakephp/plugin-installer": "^0.0.15"
     },

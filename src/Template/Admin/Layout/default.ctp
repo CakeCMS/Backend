@@ -14,13 +14,8 @@
  * @var       \Core\View\AppView $this
  */
 
-$this->Assets
-    ->jquery()
-    ->fontAwesome()
-    ->jqueryFactory()
-    ->materialize();
+echo $this->partial('init');
 ?>
-<html>
 <head>
     <?php
     echo $this->fetch('meta');
@@ -28,7 +23,27 @@ $this->Assets
     ?>
 </head>
 <body>
-<?= $this->fetch('content') ?>
+<header id="header" class="gl-header">
+    <div class="navbar-fixed">
+        <nav class="navbar-color cyan">
+            <div class="nav-wrapper">
+                <?= $this->partial('header') ?>
+            </div>
+        </nav>
+    </div>
+</header>
+<div class="main">
+    <div class="wrapper">
+        <aside id="left-sidebar-nav">
+            <?= $this->partial('sidebar') ?>
+        </aside>
+        <section id="content">
+            <div class="container">
+                <?= $this->fetch('content') ?>
+            </div>
+        </section>
+    </div>
+</div>
 <?= $this->fetch('script') ?>
 </body>
 </html>
