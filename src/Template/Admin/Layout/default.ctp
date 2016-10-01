@@ -20,6 +20,7 @@ echo $this->partial('init');
     <?php
     echo $this->fetch('meta');
     echo $this->fetch('css');
+    echo $this->fetch('css_bottom');
     ?>
 </head>
 <body>
@@ -45,5 +46,6 @@ echo $this->partial('init');
     </div>
 </div>
 <?= $this->fetch('script') ?>
+<?= $this->fetch('script_bottom') ?>
 </body>
 </html>
