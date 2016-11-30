@@ -17,13 +17,9 @@
 echo $this->partial('init');
 ?>
 <head>
-    <?php
-    echo $this->fetch('meta');
-    echo $this->fetch('css');
-    echo $this->fetch('css_bottom');
-    ?>
+    <?= $this->Document->head() ?>
 </head>
-<body>
+<body class="<?= $this->Document->getBodyClasses() ?>">
 <header id="header" class="gl-header">
     <div class="navbar-fixed">
         <nav class="navbar-color cyan">
@@ -38,14 +34,16 @@ echo $this->partial('init');
         <aside id="left-sidebar-nav">
             <?= $this->partial('sidebar') ?>
         </aside>
-        <section id="content">
-            <div class="container">
+        <section id="content" class="content">
+            <?= $this->Flash->render() ?>
+            <?= $this->partial('toolbar') ?>
+            <div class="content-wrapper">
                 <?= $this->fetch('content') ?>
             </div>
         </section>
     </div>
 </div>
-<?= $this->fetch('script') ?>
-<?= $this->fetch('script_bottom') ?>
+<?= $this->Document->assets('script') ?>
+<?= $this->Js->getBuffer() ?>
 </body>
 </html>

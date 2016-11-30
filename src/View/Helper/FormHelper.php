@@ -15,6 +15,8 @@
 
 namespace Backend\View\Helper;
 
+use Cake\View\Helper;
+use Backend\View\Helper\Traits\PrepareHelpers;
 use Core\View\Helper\FormHelper as CoreFormHelper;
 
 /**
@@ -25,6 +27,8 @@ use Core\View\Helper\FormHelper as CoreFormHelper;
 class FormHelper extends CoreFormHelper
 {
 
+    use PrepareHelpers;
+
     /**
     * List of helpers used by this helper.
     *
@@ -34,6 +38,26 @@ class FormHelper extends CoreFormHelper
         'Url'  => ['className' => 'Core.Url'],
         'Html' => ['className' => 'Backend.Html'],
     ];
+
+    /**
+     * Constructor hook method.
+     *
+     * @param array $config
+     */
+    public function initialize(array $config)
+    {
+        $this->_configWrite('prepareBtnClass', function (FormHelper $form, $options, $button) {
+            return $this->_prepareBtn($form, $options, $button);
+        });
+
+        $this->_configWrite('widgets', [
+            'checkbox' => 'Backend\View\Widget\CheckboxWidget'
+        ]);
+
+        $this->_configWrite('templates', 'Backend.templates/form');
+        
+        parent::initialize($config);
+    }
 
     /**
      * Form switcher.

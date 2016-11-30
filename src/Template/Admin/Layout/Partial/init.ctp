@@ -18,9 +18,15 @@ $this->Assets
     ->jquery()
     ->fontAwesome()
     ->jqueryFactory()
-    ->materialize();
+    ->materialize()
+    ->tableCheckAll();
 
-$this->Html->script('scripts.js', ['block' => true]);
+$this->Html->script([
+    'Core.admin/widget/menus.js',
+    'Core.admin/widget/toolbar.js',
+    'Backend.template.js',
+], ['block' => 'assets']);
+
 
 $this->Html->less([
     'Backend.styles.less',
@@ -31,5 +37,8 @@ $this->Document->meta([
     '<meta http-equiv="X-UA-Compatible" content="IE=edge">',
     '<meta name="viewport" content="width=device-width, initial-scale=1">',
 ], 'meta');
+
+$this->Js->widget('.jsToolbar', 'JBZooToolbar');
+$this->Js->widget('.gl-sidebar .side-nav', 'JBZooMenus');
 
 echo $this->Document->type();

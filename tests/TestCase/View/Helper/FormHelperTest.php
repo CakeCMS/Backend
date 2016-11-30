@@ -15,7 +15,6 @@
 
 namespace Backend\Test\View\Helper;
 
-use Core\Plugin;
 use Core\View\AppView;
 use Core\TestSuite\TestCase;
 
@@ -28,22 +27,14 @@ use Core\TestSuite\TestCase;
 class FormHelperTest extends TestCase
 {
 
-    protected $_plugin = 'Backend';
+    protected $_corePlugin = 'Backend';
 
     public function setUp()
     {
-        Plugin::load($this->_plugin, [
-            'path' => ROOT . DS,
-            'bootstrap' => true
-        ]);
-
+        parent::setUp();
         $view = new AppView();
-        $view->loadHelper('Form', [
-            'className' => 'Backend.Form',
-            'templates' => 'Backend.templates/form',
-        ]);
-
         $this->Form = $view->Form;
+        $this->Form->initialize([]);
     }
 
     public function testClassName()
@@ -65,7 +56,7 @@ class FormHelperTest extends TestCase
         $this->assertHtml($expected, $this->Form->input('test'));
     }
 
-    public function testSwitcher()
+    public function testSwitcher() 
     {
         $actual = $this->Form->switcher('custom');
         $expected = '<div class="switch">' .
@@ -73,7 +64,7 @@ class FormHelperTest extends TestCase
                 '<label>' .
                     'Off' .
                         '<input type="hidden" name="custom" value="0"/>' .
-                        '<input type="checkbox" name="custom" value="1" class="filled-in">' .
+                        '<input type="checkbox" name="custom" value="1">' .
                         '<span class="lever"></span>' .
                     'On' .
                 '</label>' .

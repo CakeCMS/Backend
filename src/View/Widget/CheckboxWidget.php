@@ -35,7 +35,8 @@ class CheckboxWidget extends CakeCheckboxWidget
      */
     public function render(array $data, ContextInterface $context)
     {
-        $data['class'] = ' filled-in';
+        $data += ['class' => ''];
+        $data['class'] .= ' filled-in ';
         $data['class'] = trim($data['class']);
 
         return parent::render($data, $context);

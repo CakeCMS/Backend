@@ -15,6 +15,8 @@
 
 namespace Backend\View\Helper;
 
+use Cake\View\Helper;
+use Backend\View\Helper\Traits\PrepareHelpers;
 use Core\View\Helper\HtmlHelper as CoreHtmlHelper;
 
 /**
@@ -25,4 +27,23 @@ use Core\View\Helper\HtmlHelper as CoreHtmlHelper;
 class HtmlHelper extends CoreHtmlHelper
 {
 
+    use PrepareHelpers;
+
+    /**
+     * Constructor hook method.
+     *
+     * @param array $config
+     */
+    public function initialize(array $config)
+    {
+        $this->_configWrite('prepareBtnClass', function (Helper $form, $options, $button) {
+            return $this->_prepareBtn($form, $options, $button);
+        });
+        
+        $this->_configWrite('prepareTooltip', function (Helper $html, $options, $tooltip) {
+            return $this->_prepareTooltip($html, $options, $tooltip);
+        });
+
+        parent::initialize($config);
+    }
 }
