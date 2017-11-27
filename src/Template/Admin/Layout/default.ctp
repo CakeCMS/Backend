@@ -6,12 +6,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @package   Backend
- * @license   MIT
- * @copyright MIT License http://www.opensource.org/licenses/mit-license.php
- * @link      https://github.com/CakeCMS/Backend".
- * @author    Sergey Kalistratov <kalistratov.s.m@gmail.com>
- * @var       \Core\View\AppView $this
+ * @package     Backend
+ * @license     MIT
+ * @copyright   MIT License http://www.opensource.org/licenses/mit-license.php
+ * @link        https://github.com/CakeCMS/Backend".
+ * @author      Sergey Kalistratov <kalistratov.s.m@gmail.com>
+ * @var         \Core\View\AppView $this
  */
 
 echo $this->partial('init');
@@ -44,6 +44,7 @@ echo $this->partial('init');
     </div>
 </div>
 <?= $this->Document->assets('script') ?>
+<?= $this->fetch('script_bottom') ?>
 <?= $this->Js->getBuffer() ?>
 </body>
 </html>

@@ -6,11 +6,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @package   Backend
- * @license   MIT
- * @copyright MIT License http://www.opensource.org/licenses/mit-license.php
- * @link      https://github.com/CakeCMS/Backend".
- * @author    Sergey Kalistratov <kalistratov.s.m@gmail.com>
+ * @package     Backend
+ * @license     MIT
+ * @copyright   MIT License http://www.opensource.org/licenses/mit-license.php
+ * @link        https://github.com/CakeCMS/Backend".
+ * @author      Sergey Kalistratov <kalistratov.s.m@gmail.com>
  */
 
 use Cake\Mailer\Email;
@@ -19,7 +19,8 @@ use Cake\Routing\DispatcherFactory;
 use Cake\Datasource\ConnectionManager;
 
 //  Composer autoload.
-if ($autoload = realpath('./vendor/autoload.php')) {
+$autoload = realpath('./vendor/autoload.php');
+if ($autoload) {
     /** @noinspection PhpIncludeInspection */
     require_once $autoload;
 } else {
@@ -50,12 +51,11 @@ if (!getenv('db_dsn')) {
 
 ConnectionManager::config('test', [
     'timezone' => 'UTC',
-    'url'      => getenv('db_dsn'),
+    'url'      => getenv('db_dsn')
 ]);
 
-Email::config(Configure::consume('Email'));
-Email::configTransport(Configure::consume('EmailTransport'));
+Email::setConfig(Configure::consume('Email'));
+Email::setConfigTransport(Configure::consume('EmailTransport'));
 
 DispatcherFactory::add('Routing');
 DispatcherFactory::add('ControllerFactory');
-

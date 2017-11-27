@@ -6,15 +6,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @package   Backend
- * @license   MIT
- * @copyright MIT License http://www.opensource.org/licenses/mit-license.php
- * @link      https://github.com/CakeCMS/Backend".
- * @author    Sergey Kalistratov <kalistratov.s.m@gmail.com>
+ * @package     Backend
+ * @license     MIT
+ * @copyright   MIT License http://www.opensource.org/licenses/mit-license.php
+ * @link        https://github.com/CakeCMS/Backend".
+ * @author      Sergey Kalistratov <kalistratov.s.m@gmail.com>
  */
 
 namespace Backend\View\Helper\Traits;
 
+use JBZoo\Utils\Arr;
 use JBZoo\Utils\Str;
 use Cake\View\Helper;
 use Cake\Utility\Hash;
@@ -56,10 +57,10 @@ trait PrepareHelpers
     protected function _prepareTooltip(Helper $helper, array $options, $tooltip)
     {
         $_options = [
-            'data-position' => 'top',
+            'data-position' => 'top'
         ];
 
-        if (isset($options['tooltipPos'])) {
+        if (Arr::key('tooltipPos', $options)) {
             $_options['data-position'] = (string) $options['tooltipPos'];
             unset($options['tooltipPos']);
         }
@@ -80,7 +81,7 @@ trait PrepareHelpers
      */
     protected function _tooltipTitle(array $options, $tooltip)
     {
-        if ($tooltip === true && !isset($options['title'])) {
+        if ($tooltip === true && !Arr::key('title', $options)) {
             $options['title'] = strip_tags($options['label']);
         }
 
@@ -100,7 +101,7 @@ trait PrepareHelpers
      */
     protected function _dataTooltip(array $options, $tooltip)
     {
-        if (isset($options['title'])) {
+        if (Arr::key('title', $options)) {
             $options['data-tooltip'] = $options['title'];
         }
 

@@ -12,8 +12,12 @@
  * @link        https://github.com/CakeCMS/Backend".
  * @author      Sergey Kalistratov <kalistratov.s.m@gmail.com>
  * @var         \Core\View\AppView $this
+ * @var         string $message
  */
 ?>
-<li class="user-details cyan darken-2">
-    User data
-</li>
+<div class="flash-message success card red lighten-4">
+    <div class="card-content red-text text-darken-2">
+        <p><?= $message ?></p>
+        <span class="jsFlashClose flash-message-close">&times;</span>
+    </div>
+</div>

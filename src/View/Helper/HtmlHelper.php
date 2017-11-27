@@ -6,16 +6,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @package   Backend
- * @license   MIT
- * @copyright MIT License http://www.opensource.org/licenses/mit-license.php
- * @link      https://github.com/CakeCMS/Backend".
- * @author    Sergey Kalistratov <kalistratov.s.m@gmail.com>
+ * @package     Backend
+ * @license     MIT
+ * @copyright   MIT License http://www.opensource.org/licenses/mit-license.php
+ * @link        https://github.com/CakeCMS/Backend".
+ * @author      Sergey Kalistratov <kalistratov.s.m@gmail.com>
  */
 
 namespace Backend\View\Helper;
 
 use Cake\View\Helper;
+use Cake\Core\Exception\Exception;
 use Backend\View\Helper\Traits\PrepareHelpers;
 use Core\View\Helper\HtmlHelper as CoreHtmlHelper;
 
@@ -33,6 +34,7 @@ class HtmlHelper extends CoreHtmlHelper
      * Constructor hook method.
      *
      * @param array $config
+     * @throws Exception
      */
     public function initialize(array $config)
     {

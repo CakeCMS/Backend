@@ -6,17 +6,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @package   Backend
- * @license   MIT
- * @copyright MIT License http://www.opensource.org/licenses/mit-license.php
- * @link      https://github.com/CakeCMS/Backend".
- * @author    Sergey Kalistratov <kalistratov.s.m@gmail.com>
+ * @package     Backend
+ * @license     MIT
+ * @copyright   MIT License http://www.opensource.org/licenses/mit-license.php
+ * @link        https://github.com/CakeCMS/Backend".
+ * @author      Sergey Kalistratov <kalistratov.s.m@gmail.com>
  */
 
 namespace Backend\Test\View\Helper;
 
 use Core\View\AppView;
-use Core\TestSuite\TestCase;
+use Test\Cases\TestCase;
 
 /**
  * Class FormHelperTest
@@ -39,7 +39,7 @@ class FormHelperTest extends TestCase
 
     public function testClassName()
     {
-        $this->assertInstanceOf('Backend\View\Helper\FormHelper', $this->Form);
+        self::assertInstanceOf('Backend\View\Helper\FormHelper', $this->Form);
     }
 
     public function testInput()
@@ -53,7 +53,7 @@ class FormHelperTest extends TestCase
             '/div'
         ];
 
-        $this->assertHtml($expected, $this->Form->input('test'));
+        $this->assertHtml($expected, $this->Form->control('test'));
     }
 
     public function testSwitcher() 

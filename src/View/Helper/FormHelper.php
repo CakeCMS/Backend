@@ -6,16 +6,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @package   Backend
- * @license   MIT
- * @copyright MIT License http://www.opensource.org/licenses/mit-license.php
- * @link      https://github.com/CakeCMS/Backend".
- * @author    Sergey Kalistratov <kalistratov.s.m@gmail.com>
+ * @package     Backend
+ * @license     MIT
+ * @copyright   MIT License http://www.opensource.org/licenses/mit-license.php
+ * @link        https://github.com/CakeCMS/Backend".
+ * @author      Sergey Kalistratov <kalistratov.s.m@gmail.com>
  */
 
 namespace Backend\View\Helper;
 
+use JBZoo\Utils\Arr;
 use Cake\View\Helper;
+use Cake\Core\Exception\Exception;
 use Backend\View\Helper\Traits\PrepareHelpers;
 use Core\View\Helper\FormHelper as CoreFormHelper;
 
@@ -43,6 +45,7 @@ class FormHelper extends CoreFormHelper
      * Constructor hook method.
      *
      * @param array $config
+     * @throws Exception
      */
     public function initialize(array $config)
     {
@@ -75,7 +78,7 @@ class FormHelper extends CoreFormHelper
             'after'  => __d('backend', 'On')
         ];
 
-        $title = (isset($options['title'])) ? $options['title'] : $fieldName;
+        $title = (Arr::key('title', $options)) ? $options['title'] : $fieldName;
 
         if (!empty($title)) {
             $title = $this->Html->div('switch-title', $title);
@@ -83,10 +86,10 @@ class FormHelper extends CoreFormHelper
 
         $content = $this->formatTemplate(__FUNCTION__, [
             'input'  => $input,
-            'lever'  => '<span class="lever"></span>',
-            'before' => $options['before'],
-            'after'  => $options['after'],
             'title'  => $title,
+            'after'  => $options['after'],
+            'before' => $options['before'],
+            'lever'  => '<span class="lever"></span>'
         ]);
 
         return $content;
