@@ -42,6 +42,47 @@ class FormHelperTest extends TestCase
         self::assertInstanceOf('Backend\View\Helper\FormHelper', $this->Form);
     }
 
+    public function testFile()
+    {
+        $expected = [
+            'div' => ['class' => 'input-field file'],
+                ['div' => ['class' => 'file-field input-field']],
+                    ['div' => ['class' => 'btn']],
+                        ['span' => []],
+                            'image',
+                        '/span',
+                        ['input' => ['type' => 'file', 'name' => 'image']],
+                    '/div',
+                    ['div' => ['class' => 'file-path-wrapper']],
+                        ['input' => ['class' => 'file-path', 'type' => 'text']],
+                    '/div',
+                '/div',
+            '/div'
+        ];
+
+        $this->assertHtml($expected, $this->Form->file('image'));
+
+        $expected = [
+            'div' => ['class' => 'input-field file'],
+                ['div' => ['class' => 'file-field input-field']],
+                    ['div' => ['class' => 'btn']],
+                        ['span' => []],
+                            'Custom title',
+                        '/span',
+                        ['input' => ['type' => 'file', 'name' => 'avatar']],
+                    '/div',
+                    ['div' => ['class' => 'file-path-wrapper']],
+                        ['input' => ['class' => 'file-path', 'type' => 'text']],
+                    '/div',
+                '/div',
+            '/div'
+        ];
+
+        $this->assertHtml($expected, $this->Form->file('avatar', [
+            'title' => 'Custom title'
+        ]));
+    }
+
     public function testInput()
     {
         $expected = [
@@ -56,7 +97,7 @@ class FormHelperTest extends TestCase
         $this->assertHtml($expected, $this->Form->control('test'));
     }
 
-    public function testSwitcher() 
+    public function testSwitcher()
     {
         $actual = $this->Form->switcher('custom');
         $expected = '<div class="switch">' .
@@ -64,7 +105,7 @@ class FormHelperTest extends TestCase
                 '<label>' .
                     'Off' .
                         '<input type="hidden" name="custom" value="0"/>' .
-                        '<input type="checkbox" name="custom" value="1">' .
+                        '<input type="checkbox" name="custom" value="1" class="filled-in">' .
                         '<span class="lever"></span>' .
                     'On' .
                 '</label>' .

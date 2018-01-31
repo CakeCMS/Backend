@@ -11,6 +11,52 @@
 // @link       https://github.com/CakeCMS/Backend
 //
 
+.ck-form {
+
+    .input-field {
+
+        &.error {
+            background: #ffcdd2;
+            padding: 2px 6px;
+            color: #d63b2f;
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 2px;
+
+            input:not([type]),
+            input[type=text],
+            input[type=password],
+            input[type=email],
+            input[type=url],
+            input[type=time],
+            input[type=date],
+            input[type=datetime],
+            input[type=datetime-local],
+            input[type=tel],
+            input[type=number],
+            input[type=search],
+            textarea.materialize-textarea {
+                border-bottom: 1px solid #d73644;
+            }
+
+            > label {
+                top: 0.3rem;
+            }
+
+            &.select {
+
+                > label {
+                    top: -1.7rem;
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
 .ck-hide-label {
 
     label > span {

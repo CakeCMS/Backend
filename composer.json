@@ -14,17 +14,15 @@
         }
     ],
     "require"      : {
-        "php"             : ">=5.6.0",
-        "cakephp/cakephp" : "~3.5"
+        "cake-cms/core" : "@dev"
     },
     "require-dev"  : {
         "cake-cms/test"            : "@dev",
         "jbzoo/phpunit"            : "~2.1",
-        "psy/psysh"                : "@stable",
-        "cake-cms/core"            : "~1.2",
         "cakephp/bake"             : "~1.1",
+        "satooshi/php-coveralls"   : "^1.0.2",
         "cakephp/plugin-installer" : "^0.0.15",
-        "satooshi/php-coveralls"   : "^1.0.2"
+        "psy/psysh"                : "@stable"
     },
     "autoload"     : {
         "psr-4" : {
@@ -55,13 +53,13 @@
             "composer update --no-interaction --optimize-autoloader"
         ],
         "manifest"           : "composer validate --no-interaction",
+        "phploc"             : "php ./vendor/phploc/phploc/phploc ./src --verbose",
         "autoload"           : "composer dump-autoload --optimize --no-interaction",
+        "phpcpd"             : "php ./vendor/sebastian/phpcpd/phpcpd ./src --verbose",
+        "coveralls"          : "php ./vendor/satooshi/php-coveralls/bin/coveralls --verbose",
         "phpunit"            : "php ./vendor/phpunit/phpunit/phpunit --configuration ./phpunit.xml.dist",
         "phpmd"              : "php ./vendor/phpmd/phpmd/src/bin/phpmd ./src text codesize, unusedcode, naming",
         "phpcs"              : "php ./vendor/squizlabs/php_codesniffer/bin/phpcs ./src --standard=./vendor/cake-cms/test/src/phpcs/CakeCMS/ruleset.xml --report=full",
-        "phpcpd"             : "php ./vendor/sebastian/phpcpd/phpcpd ./src --verbose",
-        "phploc"             : "php ./vendor/phploc/phploc/phploc ./src --verbose",
-        "coveralls"          : "php ./vendor/satooshi/php-coveralls/bin/coveralls --verbose",
         "post-autoload-dump" : [
             "Cake\\Composer\\Installer\\PluginInstaller::postAutoloadDump"
         ]

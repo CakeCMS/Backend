@@ -44,6 +44,10 @@ return [
         ]);
         $view->loadHelper('Form', [
             'className' => 'Backend.Form',
+            'widgets'   => [
+                'file'     => ['Backend\View\Widget\FileWidget'],
+                'checkbox' => ['Backend\View\Widget\CheckboxWidget']
+            ]
         ]);
     }
 ];

@@ -14,9 +14,20 @@
  */
 
 return [
+    'file' => implode(PHP_EOL, [
+        '<div class="file-field input-field">',
+            '<div class="btn">',
+                '<span>{{title}}</span>',
+                '<input type="file" name="{{name}}">',
+            '</div>',
+            '<div class="file-path-wrapper">',
+                '<input class="file-path" type="text">',
+            '</div>',
+        '</div>'
+    ]),
     'formGroup'           => "{{input}}\n{{label}}",
     'inputContainer'      => '<div class="input-field {{type}}{{required}}">{{content}}</div>',
-    'inputContainerError' => '<div class="input-field {{type}}{{required}} error">{{content}}{{error}}</div>',
     'nestingLabel'        => '{{hidden}}{{input}}<label{{attrs}}><span>{{text}}</span></label>',
+    'inputContainerError' => '<div class="input-field {{type}}{{required}} error">{{content}}{{error}}</div>',
     'switcher'            => '<div class="switch">{{title}}<label>{{before}}{{input}}{{lever}}{{after}}</label></div>'
 ];

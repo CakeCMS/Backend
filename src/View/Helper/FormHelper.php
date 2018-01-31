@@ -16,7 +16,6 @@
 namespace Backend\View\Helper;
 
 use JBZoo\Utils\Arr;
-use Cake\View\Helper;
 use Cake\Core\Exception\Exception;
 use Backend\View\Helper\Traits\PrepareHelpers;
 use Core\View\Helper\FormHelper as CoreFormHelper;
@@ -38,8 +37,33 @@ class FormHelper extends CoreFormHelper
     */
     public $helpers = [
         'Url'  => ['className' => 'Core.Url'],
-        'Html' => ['className' => 'Backend.Html'],
+        'Html' => ['className' => 'Backend.Html']
     ];
+
+    /**
+     * Creates file input widget.
+     *
+     * @param string $fieldName Name of a field, in the form "modelname.fieldname"
+     * @param array $options Array of HTML attributes.
+     *
+     * @return string A generated file input.
+     */
+    public function file($fieldName, array $options = [])
+    {
+        $content = parent::file($fieldName, $options);
+        $options = $this->_parseOptions($fieldName, $options);
+
+        $options['type'] = __FUNCTION__;
+
+        $result = $this->_inputContainerTemplate([
+            'error'       => null,
+            'errorSuffix' => null,
+            'content'     => $content,
+            'options'     => $options
+        ]);
+
+        return $result;
+    }
 
     /**
      * Constructor hook method.
@@ -53,12 +77,8 @@ class FormHelper extends CoreFormHelper
             return $this->_prepareBtn($form, $options, $button);
         });
 
-        $this->_configWrite('widgets', [
-            'checkbox' => 'Backend\View\Widget\CheckboxWidget'
-        ]);
-
         $this->_configWrite('templates', 'Backend.templates/form');
-        
+
         parent::initialize($config);
     }
 
