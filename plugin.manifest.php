@@ -46,6 +46,7 @@ return [
             'className' => 'Backend.Form',
             'widgets'   => [
                 'file'     => ['Backend\View\Widget\FileWidget'],
+                'textarea' => ['Backend\View\Widget\TextareaWidget'],
                 'checkbox' => ['Backend\View\Widget\CheckboxWidget']
             ]
         ]);

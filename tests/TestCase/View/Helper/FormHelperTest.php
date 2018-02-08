@@ -95,6 +95,41 @@ class FormHelperTest extends TestCase
         ];
 
         $this->assertHtml($expected, $this->Form->control('test'));
+
+        $expected = [
+            'div' => ['class' => 'input-field textarea'],
+                'textarea' => [
+                    'rows'  => 5,
+                    'name'  => 'test',
+                    'id'    => 'test',
+                    'class' => 'materialize-textarea',
+                ],
+                '/textarea',
+                'label' => ['for' => 'test'],
+                    'Test',
+                '/label',
+            '/div'
+        ];
+        $this->assertHtml($expected, $this->Form->control('test', ['type' => 'textarea']));
+
+        $expected = [
+            'div' => ['class' => 'input-field textarea'],
+                'textarea' => [
+                    'rows'  => 5,
+                    'name'  => 'test',
+                    'id'    => 'test',
+                    'class' => 'custom-class materialize-textarea'
+                ],
+                '/textarea',
+                'label' => ['for' => 'test'],
+                    'Test',
+                '/label',
+            '/div'
+        ];
+        $this->assertHtml($expected, $this->Form->control('test', [
+            'type'  => 'textarea',
+            'class' => 'custom-class'
+        ]));
     }
 
     public function testSwitcher()
