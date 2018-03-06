@@ -30,25 +30,5 @@ return [
         'description' => 'Backend theme for CakePHP CMS',
         'type'        => 'theme',
         'backend'     => true,
-    ],
-    'View.initialize' => function (AppView $view) {
-        $helpers = $view->helpers();
-
-        $helpers->unload('Form');
-        $helpers->unload('Html');
-        $helpers->unload('Assets');
-
-        $view->loadHelper('Backend.Assets');
-        $view->loadHelper('Html', [
-            'className' => 'Backend.Html',
-        ]);
-        $view->loadHelper('Form', [
-            'className' => 'Backend.Form',
-            'widgets'   => [
-                'file'     => ['Backend\View\Widget\FileWidget'],
-                'textarea' => ['Backend\View\Widget\TextareaWidget'],
-                'checkbox' => ['Backend\View\Widget\CheckboxWidget']
-            ]
-        ]);
-    }
+    ]
 ];
