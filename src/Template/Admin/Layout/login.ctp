@@ -13,16 +13,26 @@
  * @author      Sergey Kalistratov <kalistratov.s.m@gmail.com>
  * @var         \Core\View\AppView $this
  */
+
+echo $this->partial('init');
 ?>
-<div class="gl-logo left">
-    <?php
-    echo $this->Html->link(null, '#', [
-        'data-activates' => 'nav-mobile',
-        'icon'           => 'navicon',
-        'class'          => 'button-collapse top-nav full hide-on-large-only'
-    ]);
-    ?>
-    <h1 class="gl-logo-title">
-        <?= $this->fetch('page_title') ?>
-    </h1>
+<head>
+    <?= $this->Document->head() ?>
+</head>
+<body class="<?= $this->Document->getBodyClasses() ?> cyan">
+<div class="main">
+
+    <div class="row">
+        <div class="col s3 offset-s4">
+            <div class="card-panel">
+                <?= $this->Flash->render() ?>
+                <?= $this->fetch('content') ?>
+            </div>
+        </div>
+    </div>
 </div>
+<?= $this->Document->assets('script') ?>
+<?= $this->fetch('script_bottom') ?>
+<?= $this->Js->getBuffer() ?>
+</body>
+</html>

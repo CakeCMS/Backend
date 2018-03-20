@@ -13,10 +13,7 @@
  * @author      Sergey Kalistratov <kalistratov.s.m@gmail.com>
  */
 
-use JBZoo\Utils\Str;
-use Cake\Utility\Hash;
-use Core\View\AppView;
-use Core\View\Helper\HtmlHelper;
+//  http://demo.geekslabs.com/materialize-v1.0/user-login.html
 
 return [
     'meta' => [
