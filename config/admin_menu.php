@@ -19,6 +19,6 @@ use Core\View\AppView;
 Nav::add('sidebar', 'user-details', [
     'weight'   => 9,
     'callable' => function (AppView $view) {
-        return $view->element('Backend.Nav/sidebar/user_details');
+        return $view->element('Backend.Nav/Sidebar/user_details');
     }
 ]);
